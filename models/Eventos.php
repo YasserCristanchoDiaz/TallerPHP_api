@@ -1,6 +1,6 @@
 <?php
 
-class Disciplinas {
+class Eventos {
 
     private $conn;
     
@@ -31,7 +31,7 @@ class Disciplinas {
 
             $this->id = $row['id'];
             $this->descripcion = $row['descripcion'];
-            $this->id_disciplina = $row['id_disciplina'];
+            $this->id_disciplinas = $row['id_disciplinas'];
 
             return TRUE;
 
@@ -42,9 +42,10 @@ class Disciplinas {
 
     public function postData() {
 
-        $stmt = $this->conn->prepare('INSERT INTO eventos SET descripcion = :descripcion');
+        $stmt = $this->conn->prepare('INSERT INTO eventos SET descripcion = :descripcion, id_disciplinas = :id_disciplinas');
 
         $stmt->bindParam(':descripcion', $this->descripcion);
+        $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
 
         if($stmt->execute()) {
             return TRUE;
@@ -58,8 +59,8 @@ class Disciplinas {
         $stmt = $this->conn->prepare('UPDATE eventos SET descripcion = :descripcion WHERE id = :id');
 
         $stmt->bindParam(':descripcion', $this->descripcion);
+        $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
         $stmt->bindParam(':id', $this->id);
-        $stmt->bindParam(':iid_disciplinad', $this->id_disciplina);
 
         if($stmt->execute()) {
             return TRUE;

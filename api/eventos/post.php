@@ -16,6 +16,7 @@
       $data = json_decode(file_get_contents("php://input"));
 
       $evento->descripcion = $data->descripcion;
+      $evento->id_disciplinas = $data->id_disciplinas;
     
       if($evento->postData()) {
         echo json_encode(array('message' => 'Success'));

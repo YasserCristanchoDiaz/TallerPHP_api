@@ -1,5 +1,6 @@
 <?php
     header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: *');
     header('Content-Type: application/json');
 
     include_once '../../config/Database.php';
@@ -25,8 +26,8 @@
                     'apellido' => $participante->apellido,
                     'edad' => $participante->edad,
                     'peso' => $participante->peso,
-                    'altura' => $participante->altura,
-                    'id_disciplina' => $participante->id_disciplina
+                    'estatura' => $participante->estatura,
+                    'id_disciplinas' => $participante->id_disciplinas
                 )));
 
             } else {

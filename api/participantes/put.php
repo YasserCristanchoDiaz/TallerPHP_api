@@ -1,7 +1,8 @@
 <?php
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Headers: *');
+    header('Access-Control-Allow-Methods: PUT');
 
     include_once '../../config/Database.php';
     include_once '../../models/Participantes.php';
@@ -20,8 +21,8 @@
 		$participante->apellido = $data->apellido;
 		$participante->edad = $data->edad;
 		$participante->peso = $data->peso;
-		$participante->altura = $data->altura;
-		$participante->id_disciplina = $data->id_disciplina;
+		$participante->estatura = $data->estatura;
+		$participante->id_disciplinas = $data->id_disciplinas;
 
 		if(! is_null($participante->id)) {
 

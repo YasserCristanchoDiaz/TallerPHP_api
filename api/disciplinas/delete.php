@@ -1,7 +1,8 @@
 <?php
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Headers: *');
+    header('Access-Control-Allow-Methods: DELETE');
 
     include_once '../../config/Database.php';
     include_once '../../models/Disciplinas.php';

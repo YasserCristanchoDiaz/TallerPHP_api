@@ -1,5 +1,6 @@
 <?php
     header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: *');
     header('Content-Type: application/json');
 
     include_once '../../config/Database.php';
@@ -22,7 +23,7 @@
                 print_r(json_encode(array(
                     'id' => $evento->id,
                     'descripcion' => $evento->descripcion,
-                    'id_disciplina' => $evento->id_disciplina
+                    'id_disciplinas' => $evento->id_disciplinas
                 )));
 
             } else {

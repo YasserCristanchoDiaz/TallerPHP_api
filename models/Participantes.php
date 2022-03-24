@@ -9,8 +9,8 @@ class Participantes {
     public $apellido;
     public $edad;
     public $peso;
-    public $altura;
-    public $id_disciplina;
+    public $estatura;
+    public $iid_disciplinas;
 
     public function __construct($db){
         $this->conn = $db;
@@ -38,8 +38,8 @@ class Participantes {
             $this->apellido = $row['apellido'];
             $this->edad = $row['edad'];
             $this->peso = $row['peso'];
-            $this->altura = $row['altura'];
-            $this->id_disciplina = $row['id_disciplina'];
+            $this->estatura = $row['estatura'];
+            $this->id_disciplinas = $row['id_disciplinas'];
 
             return TRUE;
 
@@ -50,14 +50,15 @@ class Participantes {
 
     public function postData() {
 
-        $stmt = $this->conn->prepare('INSERT INTO participantes SET nombre = :nombre, apellido = :apellido, edad = :edad, peso = :peso, altura = :altura, id_disciplina = :id_disciplina');
+        $stmt = $this->conn->prepare('INSERT INTO participantes SET id = :id, nombre = :nombre, apellido = :apellido, edad = :edad, peso = :peso, estatura = :estatura, id_disciplinas = :id_disciplinas');
 
+        $stmt->bindParam(':id', $this->id);
         $stmt->bindParam(':nombre', $this->nombre);
         $stmt->bindParam(':apellido', $this->apellido);
         $stmt->bindParam(':edad', $this->edad);
         $stmt->bindParam(':peso', $this->peso);
-        $stmt->bindParam(':altura', $this->altura);
-        $stmt->bindParam(':id_disciplina', $this->id_disciplina);
+        $stmt->bindParam(':estatura', $this->estatura);
+        $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
 
         if($stmt->execute()) {
             return TRUE;
@@ -68,14 +69,14 @@ class Participantes {
 
     public function putData() {
 
-        $stmt = $this->conn->prepare('UPDATE participantes SET nombre = :nombre, apellido = :apellido, edad = :edad, peso = :peso, altura = :altura, id_disciplina = :id_disciplina WHERE id = :id');
+        $stmt = $this->conn->prepare('UPDATE participantes SET nombre = :nombre, apellido = :apellido, edad = :edad, peso = :peso, estatura = :estatura, id_disciplinas = :id_disciplinas WHERE id = :id');
 
         $stmt->bindParam(':nombre', $this->nombre);
         $stmt->bindParam(':apellido', $this->apellido);
         $stmt->bindParam(':edad', $this->edad);
         $stmt->bindParam(':peso', $this->peso);
-        $stmt->bindParam(':altura', $this->altura);
-        $stmt->bindParam(':id_disciplina', $this->id_disciplina);
+        $stmt->bindParam(':estatura', $this->estatura);
+        $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
         $stmt->bindParam(':id', $this->id);
 
         if($stmt->execute()) {

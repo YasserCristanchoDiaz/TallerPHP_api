@@ -15,12 +15,13 @@
 
       $data = json_decode(file_get_contents("php://input"));
 
+      $participante->id = $data->id;
       $participante->nombre = $data->nombre;
       $participante->apellido = $data->apellido;
       $participante->edad = $data->edad;
       $participante->peso = $data->peso;
-      $participante->altura = $data->altura;
-      $participante->id_disciplina = $data->id_disciplina;
+      $participante->estatura = $data->estatura;
+      $participante->id_disciplinas = $data->id_disciplinas;
     
       if($participante->postData()) {
         echo json_encode(array('message' => 'Success'));

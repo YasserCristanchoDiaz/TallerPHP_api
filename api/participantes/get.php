@@ -1,5 +1,6 @@
 <?php
     header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: *');
     header('Content-Type: application/json');
 
     include_once '../../config/Database.php';
@@ -22,7 +23,7 @@
             while($row = $res->fetch(PDO::FETCH_ASSOC)) {
 
                 extract($row);
-                array_push($participantes, array( 'id' => $id, 'nombre' => $nombre, 'apellido' => $apellido, 'edad' => $edad, 'peso' => $peso, 'altura' => $altura, 'id_disciplina' => $id_disciplina));
+                array_push($participantes, array( 'id' => $id, 'nombre' => $nombre, 'apellido' => $apellido, 'edad' => $edad, 'peso' => $peso, 'estatura' => $estatura, 'id_disciplinas' => $id_disciplinas));
             }
             
             echo json_encode($participantes);

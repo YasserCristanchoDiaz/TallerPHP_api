@@ -1,7 +1,8 @@
 <?php
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Headers: *');
+    header('Access-Control-Allow-Methods: PUT');
 
     include_once '../../config/Database.php';
     include_once '../../models/Eventos.php';
@@ -17,7 +18,7 @@
 
 		$evento->id = isset($data->id) ? $data->id : NULL;
 		$evento->descripcion = $data->descripcion;
-		$evento->id_disciplina = $data->id_disciplina;
+		$evento->id_disciplinas = $data->id_disciplinas;
 
 		if(! is_null($evento->id)) {
 

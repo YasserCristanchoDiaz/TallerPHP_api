@@ -6,7 +6,8 @@ class Eventos {
     
     public $id;
     public $descripcion;
-    public $id_disciplina;
+    public $position;
+    public $id_disciplinas;
 
     public function __construct($db){
         $this->conn = $db;
@@ -31,6 +32,7 @@ class Eventos {
 
             $this->id = $row['id'];
             $this->descripcion = $row['descripcion'];
+            $this->position = $row['position'];
             $this->id_disciplinas = $row['id_disciplinas'];
 
             return TRUE;
@@ -42,10 +44,12 @@ class Eventos {
 
     public function postData() {
 
-        $stmt = $this->conn->prepare('INSERT INTO eventos SET descripcion = :descripcion, id_disciplinas = :id_disciplinas');
+        $stmt = $this->conn->prepare('INSERT INTO eventos SET descripcion = :descripcion, position = :position, id_disciplinas = :id_disciplinas');
 
         $stmt->bindParam(':descripcion', $this->descripcion);
+        $stmt->bindParam(':position', $this->position);
         $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
+        
 
         if($stmt->execute()) {
             return TRUE;
@@ -56,11 +60,12 @@ class Eventos {
 
     public function putData() {
 
-        $stmt = $this->conn->prepare('UPDATE eventos SET descripcion = :descripcion, id_disciplinas = :id_disciplinas WHERE id = :id');
+        $stmt = $this->conn->prepare('UPDATE eventos SET descripcion = :descripcion, position = :position, id_disciplinas = :id_disciplinas WHERE id = :id');
 
-        $stmt->bindParam(':descripcion', $this->descripcion);
-        $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
         $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':descripcion', $this->descripcion);
+        $stmt->bindParam(':position', $this->position);
+        $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
 
         if($stmt->execute()) {
             return TRUE;

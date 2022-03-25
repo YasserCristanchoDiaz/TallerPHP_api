@@ -16,6 +16,7 @@
       $data = json_decode(file_get_contents("php://input"));
 
       $evento->descripcion = $data->descripcion;
+      $evento->position = $data->position;
       $evento->id_disciplinas = $data->id_disciplinas;
     
       if($evento->postData()) {

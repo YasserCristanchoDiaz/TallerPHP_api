@@ -18,6 +18,7 @@
 
 		$evento->id = isset($data->id) ? $data->id : NULL;
 		$evento->descripcion = $data->descripcion;
+		$position->position = $data->position;
 		$evento->id_disciplinas = $data->id_disciplinas;
 
 		if(! is_null($evento->id)) {

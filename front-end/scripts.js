@@ -1,5 +1,5 @@
 'use_strict'
-const API_URL = 'http://localhost/php_rest/api/'
+const API_URL = 'http://localhost/TallerPhp_api/TallerPHP_api/api/'
 
 let sportsData = []
 let afiliadosData = []
@@ -25,6 +25,13 @@ const renderAfiliados = () => {
   afiliadosTable.innerHTML = ''
   afiliadosData.map((afiliado) => {
     let row = document.createElement('tr')
+    /*let disciplina = [];
+    
+    clientHTTP('GET', 'disciplinas/get_one.php').then((data) => {
+      console.log(data)
+      disciplina = data
+    })*/
+
     row.innerHTML = `
               <td>${afiliado.id}</td>
               <td>${afiliado.nombre}</td>
@@ -159,3 +166,11 @@ const clientHTTP = async (method, url, body = null) => {
     .then((response) => response.json())
     .then((data) => data)
 }
+
+//EVENTO_DEPORTIVO-------
+
+const btnDepEv = document.getElementById('btnDepEv').addEventListener('click', (e) => {
+  
+
+})
+

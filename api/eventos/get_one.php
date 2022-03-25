@@ -23,6 +23,7 @@
                 print_r(json_encode(array(
                     'id' => $evento->id,
                     'descripcion' => $evento->descripcion,
+                    'position' => $evento->position,
                     'id_disciplinas' => $evento->id_disciplinas
                 )));
 

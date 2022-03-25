@@ -22,7 +22,7 @@
 
             while($row = $res->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
-                array_push($eventos, array( 'id' => $id, 'descripcion' => $descripcion, 'id_disciplinas' => $id_disciplinas));
+                array_push($eventos, array( 'id' => $id, 'descripcion' => $descripcion, 'position' => $position, 'id_disciplinas' => $id_disciplinas));
             }
             
             echo json_encode($eventos);

@@ -10,7 +10,7 @@ class Participantes {
     public $edad;
     public $peso;
     public $estatura;
-    public $iid_disciplinas;
+    public $id_disciplinas;
 
     public function __construct($db){
         $this->conn = $db;

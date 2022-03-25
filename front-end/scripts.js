@@ -106,15 +106,31 @@ const initAfiliadoForm = () => {
 }
 
 const submitAfiliado = async () => {
+  const id = document.getElementById('id').value;
+  const nombre = document.getElementById('name').value;
+  const apellido = document.getElementById('lastName').value;
+  const edad = document.getElementById('age').value;
+  const peso = document.getElementById('weight').value;
+  const estatura = document.getElementById('height').value;
+  const id_disciplinas = document.getElementById('sports').value;
+
+  const alertAf = document.querySelector('#alertAf');
+  alertAf.innerHTML = ''
+
+  if ( id.length > 0 && nombre.length > 0 && apellido.length > 0 && edad > 0 && peso > 0 && estatura > 0 && id_disciplinas.length > 0 ) {
   const data = {
-    id: document.getElementById('id').value,
-    nombre: document.getElementById('name').value,
-    apellido: document.getElementById('lastName').value,
-    edad: document.getElementById('age').value,
-    peso: document.getElementById('weight').value,
-    estatura: document.getElementById('height').value,
-    id_disciplinas: document.getElementById('sports').value,
+    id: id,
+    nombre: nombre,
+    apellido: apellido,
+    edad: edad,
+    peso: peso,
+    estatura: estatura,
+    id_disciplinas: id_disciplinas,
   }
+
+  alertAf.innerHTML = `<div class="alert alert-success" role="alert">
+                          Afiliado agregado.
+                        </div>`
 
   switch (afiliadoFormStatus) {
     case 'Crear':
@@ -152,6 +168,12 @@ const submitAfiliado = async () => {
   document.getElementById('sports').value = ''
 
   initDatosAfiliados()
+
+ } else {
+  alertAf.innerHTML = `<div class="alert alert-danger" role="alert">
+                        Asegurese que los campos no esten vacios.
+                      </div>`
+ }
 }
 
 // UTILS ---

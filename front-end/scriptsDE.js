@@ -79,22 +79,38 @@ const initDeporEv = () => {
   }
 
 const submitDepEV = () => {
+  const descripcion = document.getElementById('des').value;
+  const position = document.getElementById('pos').value;
+  const id_disciplinas = document.getElementById('sportsDepEv').value;
+
+  const alertED = document.querySelector('#alertED');
+  alertED.innerHTML = ''
+
+  if ( descripcion.length > 0 && position > 0 && id_disciplinas.length > 0 ) {
     const dataDE = {
-        descripcion: document.getElementById('des').value,
-        position: document.getElementById('pos').value,
-        id_disciplinas: document.getElementById('sportsDepEv').value
+        descripcion: descripcion,
+        position: position,
+        id_disciplinas: id_disciplinas
     }
 
     clientHTTP('POST','eventos/post.php', dataDE).then((dataDE) => {
         console.log(dataDE)
     })
     
+    alertED.innerHTML = `<div class="alert alert-success" role="alert">
+                          Evento agregado.
+                        </div>`
+
     document.getElementById('des').value = ''
     document.getElementById('pos').value = ''
     document.getElementById('sportsDepEv').value = ''
 
     initDataDepEv();
-
+  } else {
+    alertED.innerHTML = `<div class="alert alert-danger" role="alert">
+                          Asegurese que los campos no esten vacios.
+                        </div>`
+  }
 }
 
   // UTILS ---

@@ -56,7 +56,7 @@ class Eventos {
 
     public function putData() {
 
-        $stmt = $this->conn->prepare('UPDATE eventos SET descripcion = :descripcion WHERE id = :id');
+        $stmt = $this->conn->prepare('UPDATE eventos SET descripcion = :descripcion, id_disciplinas = :id_disciplinas WHERE id = :id');
 
         $stmt->bindParam(':descripcion', $this->descripcion);
         $stmt->bindParam(':id_disciplinas', $this->id_disciplinas);
